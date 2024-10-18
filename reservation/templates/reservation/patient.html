@@ -1,0 +1,247 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content=""> 
+    <title>Project_BOCS | {{ title }}</title>
+
+    <!-- REFERENCES -->
+    <link rel="stylesheet" href="{% static 'css/patient_style.css' %}">
+
+    <!-- FAVICONS -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/BOCS Logo.png' %}">
+    <link rel="apple-touch-icon" type="image/png" href="{% static 'img/BOCS Logo.png' %}">
+
+    <script src="{% static 'js/dashboard.js' %}"  defer></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href= "{% url 'dashboard' %}">
+                <img src="{% static 'img/BOCS Logo Banner.png' %}" class="img_bocs">
+            </a>
+            <ul class="links">
+                <li class="link">
+                    <a href="{% url 'inventory' %}" class="link-item">Inventory</a>
+                </li>
+                <li class="link">
+                    <a href="{% url 'colndistrib' %}" class="link-item">Collect & Distribution</a>
+                </li>
+                <li class="link">
+                    <a href="{% url 'reservation' %}" class="link-item active">Reservation</a>
+                </li>
+                <li class="link">
+                    <a href="{% url 'transcription' %}" class="link-item">Transcription Record</a>
+                </li>
+                <li class="link">
+                    <a href="{% url 'sumrep' %}" class="link-item">Summary Report</a>
+                </li>
+            </ul>
+            <img src="{% static 'img/user.png' %}" clasuser.png menuBar" onclick="toggleMenu()">
+        </nav>
+    </header>
+    <section class="mini-nav">
+        <nav class="nav2">
+            <a href="{% url 'reservation' %}"  class="icon-link img_backIcon">
+                <img src="{% static 'img/arrow_back.png' %}">
+            </a>
+            <h1 class="title">
+                {{ title }}
+            </h1>
+            <div class="icon-link img_changeIcon" onclick="changeContent()">
+                <img src="{% static 'img/change_circle.png' %}">
+            </div>
+            <a href="{% url 'dashboard' %}" class="icon-link img_homeIcon">
+                <img src="{% static 'img/home.png' %}">
+            </a>
+        </nav>
+    </section>
+    <main class="main">
+        <img src=" {% static 'img/NCH Logo.png' %}" class="img_nch">
+        <section class="sub_wrap hide" id="toggleMenu" >
+            <div class="sub" id="menu">
+                <button type="submit" class="close" onclick="toggleMenu()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="user_info">
+                    <img src="{% static 'img/user.png' %}" class="img_user--">
+                    <h2>Doe, John Micheal V.<hr></h2>
+                    <p>MedTech</p>
+                    <p>123456789</p>
+                    <hr>
+                    <a href="{% url 'update' %}">
+                        <button type="button" class="update_btn"><span><img src="{% static 'img/edit_square.png' %}" class="icon"></span>Update Profile</button>
+                    </a>
+                    <a href="{% url 'signout' %}">
+                        <button type="button" class="logout_btn"><span><img src="{% static 'img/logout.png' %}" class="icon"></span>Log Out</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="list">
+            <form action="" class="form item" method="post">
+            <div class="input-group">
+                    <input type="text" class="input" id="PntId" required>
+                    <label for="PntId">Patient ID</label>
+            </div>
+            <div class="input-group">
+                    <input type="text" class="input" id="PntName" required>
+                    <label for="PntName">Patient Name</label>
+            </div>
+            <div class="input-group">
+                    <input type="date" class="input" id="PntBdate" >
+                    <label for="PntBdate">Patient Birthdate</label>
+                </div>
+                <div class="input-group1">
+                    <input type="text" class="input" id="PntAge" value="None" readonly>
+                    <label for="PntAge">Patient Age</label>
+            </div>
+            <div class="input-group">
+                    <select class="input" id="Btype">
+                        <option value="" disabled selected>Select Blood Type</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                    <label class="placeholder" for="Btype">Blood Type</label>
+            </div>
+            <div class="input-group">
+                    <select class="input" id="Ward">
+                        <option value="" disabled selected>Select Ward</option>
+                        <option value="Cardiology">Cardiology</option>
+                        <option value="Endocrinnology">Endocrinnology</option>
+                        <option value="Gastroenterology">Gastroenterology</option>
+                        <option value="Hematology">Hematology</option>
+                        <option value="Infectious Disease">Infectious Disease</option>
+                        <option value="Intensive Care">Intensive Care</option>
+                        <option value="Neonatology">Neonatology</option>
+                        <option value="Nephrology">Nephrology</option>
+                        <option value="Neurology">Neurology</option>
+                        <option value="Oncology">Oncology</option>
+                        <option value="Pulmonology">Pulmonology</option>
+                        <option value="Rheumatolgy">Rheumatolgy</option>
+                    </select>
+                <label class="placeholder" for="Ward">Ward</label>
+            </div>
+            <input type="submit" value="SUBMIT">
+        </form>
+        </section>
+
+        <section class="list2">
+            <section class="search-container">
+                <div class="forms">
+                    <div class="forms">
+                        <form action="" class="form1" method="" autocomplete="off">
+                            <input type="search" placeholder="Search..." class="search-bar">
+                            <button type="submit" class="search-button"><img src="{% static 'img/search.png' %}" class="img_searchIcon"></button>
+                        </form>
+                        <div class="img_qrIcon">
+                            <img src="{% static 'img/qr_code_scanner.png' %}">
+                        </div>
+                    </div>
+                <div class="search-list">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Patient ID</th>
+                                    <th>Patient Name</th>
+                                    <th>Patient Age</th>
+                                    <th>Patient BirthDate</th>
+                                    <th>Blood Type</th>
+                                    <th>Ward</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <section class="data-container">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Patient ID</th>
+                                <th>Patient Name</th>
+                                <th>Patient Age</th>
+                                <th>Patient BirthDate</th>
+                                <th>Blood Type</th>
+                                <th>Ward</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                              <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content=""> 
+    <title>Project_BOCS | {{ title }}</title>
+
+    <!-- REFERENCES -->
+    <link rel="stylesheet" href="{% static 'css/inventory_style.css' %}">
+
+    <!-- FAVICONS -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/BOCS Logo.png' %}">
+    <link rel="apple-touch-icon" type="image/png" href="{% static 'img/BOCS Logo.png' %}">
+
+    <script src="{% static 'js/dashboard.js' %}"  defer></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href= "{% url 'dashboard' %}">
+                <img src="{% static 'img/BOCS Logo Banner.png' %}" class="img_bocs">
+            </a>
+            <ul class="links">
+                <li class="link">
+                    <a href="{% url 'inventory' %}" class="link-item">Inventory</a>
+                </li>
+                <li class="link">
+                    <a href="{% url 'colndistrib' %}" class="link-item">Collect & Distribution</a>
+                </li>
+                <li class="link">
+                    <a href="{% url 'reservation' %}" class="link-item">Reservation</a>
+                </li>
+                <li class="link">
+                    <a href="{% url 'transcription' %}" class="link-item">Transcription Record</a>
+                </li>
+                <li class="link">
+                    <a href="{% url 'sumrep' %}" class="link-item active">Summary Report</a>
+                </li>
+            </ul>
+            <img src="{% static 'img/user.png' %}" class="img_user menuBar" onclick="toggleMenu()">
+        </nav>
+    </header>
+    <section class="mini-nav">
+        <nav class="nav2">
+            <a href="{% url 'dashboard' %}"  class="icon-link img_backIcon">
+                <img src="{% static 'img/arrow_back.png' %}">
+            </a>
+            <h1 class="title">
+                {{ title }}
+            </h1>
+            <a href="{% url 'dashboard' %}" class="icon-link img_homeIcon">
+                <img src="{% static 'img/home.png' %}">
+            </a>
+        </nav>
+    </section>
+    <main class="main">
+        <img src="{% static 'img/NCH Logo.png' %}" class="img_nch">
+        <section class="sub_wrap hide" id="toggleMenu" >
+            <div class="sub" id="menu">
+                <button type="submit" class="close" onclick="toggleMenu()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="user_info">
+                    <img src="{% static 'img/user.png' %}" class="img_user--">
+                    <h2>Doe, John Micheal V.<hr></h2>
+                    <p>MedTech</p>
+                    <p>123456789</p>
+                    <hr>
+                    <a href="{% url 'update' %}">
+                        <button type="button" class="update_btn"><span><img src="{% static 'img/edit_square.png' %}" class="icon"></span>Update Profile</button>
+                    </a>
+                    <a href="{% url 'signout' %}">
+                        <button type="button" class="logout_btn"><span><img src="{% static 'img/logout.png' %}" class="icon"></span>Log Out</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

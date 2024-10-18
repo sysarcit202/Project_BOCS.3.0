@@ -1,0 +1,1 @@
+web gunicorn project_bocs.wsgi:application --log-file -

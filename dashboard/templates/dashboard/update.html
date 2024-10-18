@@ -1,0 +1,86 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content=""> 
+    <title>Project_BOCS | {{ title }}</title>
+    
+    <!-- REFERENCES -->
+    <link rel="stylesheet" href="{% static 'css/update_style.css' %}">
+
+    <!-- FAVICONS -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/BOCS Logo.png' %}">
+    <link rel="apple-touch-icon" type="image/png" href="{% static 'img/BOCS Logo.png' %}">
+
+    <script src="{% static 'js/update.js' %}" defer></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <img src="{% static 'img/NCH Logo.png' %}" class="img_nch">
+            <div class="typog1">
+                <p>NATIONAL CHILDREN'S HOSPITAL</p>
+                <h1>BLOOD BANK OPERATION<br>CYBER SYSTEM</h1>
+            </div>
+            <img src="{% static 'img/BOCS Logo Banner.png' %}" class="img_bocs">
+        </nav>
+    </header>
+    <main class="main">
+        <section class="container">
+            <form action="{% url 'dashboard' %}" class="form1" method="" autocomplete="off">
+                <h1>Update Profile</h1>
+                <div class="input-group1">
+                    <img src="{% static 'img/user.png'%}" class="img_user" id="userImg">
+                    <label class="placeholder1" for="Uprofpic">Upload Image</label>                    
+                    <input type="file" class="input" id="Uprofpic" accept="image/*" required>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="input" id="Ufname" required>
+                    <label class="placeholder" for="Ufname">First Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="input" id="Umname" required>
+                    <label class="placeholder" for="Umname">Middle Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="input" id="Ulname" required>
+                    <label class="placeholder" for="Ulname">Last Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="email" class="input" id="Uemail" required>
+                    <label class="placeholder" for="Uemail">Email Address</label>
+                </div>
+                <div class="input-group">
+                    <select class="input" id="UjRole">
+                        <option value="" disabled selected>Select Job Role</option>
+                        <option value="MedTech">MedTech</option>
+                        <option value="Nurse">Nurse</option>
+                        <option value="BloodBank Technician">BloodBank Technician</option>
+                    </select>
+                    <label class="placeholder" for="UjRole">Job Role</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="input" id="UidNum" required>
+                    <label class="placeholder" for="UidNum">ID Number</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" class="input" id="Upass" required>
+                    <label class="placeholder" for="Upass">Password</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" class="input" id="UrPass" required>
+                    <label class="placeholder" for="UrPass">Password Verification</label>
+                </div>
+                <input type="submit" value="SUBMIT">
+                <a href="{% url 'dashboard' %}">
+                    <input type="button" value="CANCEL">
+                </a>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

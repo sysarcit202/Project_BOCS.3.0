@@ -1,0 +1,11 @@
+{% extends "authentication/reset_form.html" %}
+
+{% block content %}
+<!-- <p>Hi {{ user.get_full_name }},</p>
+<p>You're receiving this email because you requested a password reset for your account.</p>
+<p>Please click the following link to reset your password:</p>
+<p><a href="{{ protocol }}://{{ domain }}{% url 'reset_confirm' uidb64=uid token=token %}">Reset Password</a></p>
+<p>If you didn’t request this, you can ignore this email.</p> -->
+Someone asked for password reset for email {{ email }}. Follow the link below:
+{{ protocol}}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %} 
+{% endblock %}
